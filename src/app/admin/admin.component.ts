@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IAdmin } from '../models/admin';
 import { AdminService } from '../services/admin.service';
 
@@ -56,15 +56,12 @@ export class AdminComponent implements OnInit {
     this.adminService.SignIn(userId, password).subscribe({
       next: admin => {
         this.admin = admin;
-        const navigationExtra: NavigationExtras={
-          state: {
-            userId: this.admin.userId
-          }
-        };
+        localStorage.setItem("adminId", JSON.stringify(this.admin.userId));
+        localStorage.setItem("userId", JSON.stringify(0));
         console.log(this.admin);
-        this.router.navigate(['/admin-dashboard'], navigationExtra);
+        this.router.navigate(['/admin-dashboard']);
       },
-      error: err=>{
+      error: err => {
         alert('Invalid User Id or Passsword');
       }
     });

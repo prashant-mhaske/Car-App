@@ -59,6 +59,8 @@ export class LoginComponent implements OnInit {
     this.customerService.SignIn(userId,password).subscribe({
       next : customer => {
           this.customer=customer;
+          localStorage.setItem("userId",JSON.stringify(this.customer.userId));
+          localStorage.setItem("adminId",JSON.stringify(0));
           console.log(this.customer);
           this.router.navigate(['/products']);
       },

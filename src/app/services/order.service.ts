@@ -38,6 +38,13 @@ export class OrderService {
     );
   }
 
+  public addOrder(id: number, billingDate: string,userId: number, cars: number[]): Observable<IOrder>{
+    return this.httpClient.post<IOrder>(`${this.orderApi}add/${id}/{billingDate}/${userId}?billingDate=${billingDate}`, cars).pipe(
+      tap(data => console.log('Order Added :', JSON.stringify(data))),
+      catchError(this.handleError)
+    )
+  }
+
   // public getBill(id: number): Observable<String> {
   //   return this.httpClient.get<String>(`${this.orderApi}getBill/${id}`);
   // }

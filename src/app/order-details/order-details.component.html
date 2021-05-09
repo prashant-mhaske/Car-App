@@ -3,7 +3,7 @@
         <div class="d-flex flex-row align-items-center">
             <h4 class="text-uppercase mt-1">Demo Pay</h4> <span class="ml-2">Gateway</span>
         </div>
-        <a routerLink='/products' class="cancel com-color">Cancel and return to website</a>
+        <a (click)="click()" class="cancel com-color">Cancel and return to website</a>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -21,7 +21,7 @@
                     <hr>
                 </div>
             </div>
-            <div class="buttons"> <a class="btn btn-success btn-block" routerLink='/payment'>Proceed to payment</a>
+            <div class="buttons"> <a class="btn btn-success btn-block" (click)="goToPay()">Proceed to payment</a>
             </div>
         </div>
         <div class="col-md-2"> </div>

@@ -80,6 +80,12 @@ export class CarDataComponent implements OnInit {
   // ]
 
   ngOnInit(): void {
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
     this.carServive.getAllCars().subscribe(data=>this.cars=data);
     this.num=JSON.parse(localStorage.getItem('len'));
     // console.log(this.num);
