@@ -23,6 +23,7 @@ export class BillDetailsComponent implements OnInit {
     //   // let bill = this.orderService.getBill(this.router.getCurrentNavigation().extras.state.id).subscribe({
         next: order =>{
           this.order = order;
+          console.log(order.billingDate);
           for(let i=0;i<this.order.car.length;i++){
             this.total+=this.order.car[i].price;
           }

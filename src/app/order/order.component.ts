@@ -21,8 +21,8 @@ export class OrderComponent implements OnInit {
   billForm: FormGroup;
   byDateForm: FormGroup;
   openForm: number = null;
-  addMoreCars: boolean = false;
-  order: IOrder=new IOrder();
+  // order: IOrder=new IOrder();
+  order: IOrder;
   orders: IOrder[] = [];
 
   constructor(private orderService:OrderService, private paymentService: PaymentService,private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) { 
@@ -43,7 +43,7 @@ export class OrderComponent implements OnInit {
     this.allOrderForm = this.formBuilder.group({});
 
     this.byIdForm = this.formBuilder.group({
-      id: [''],
+      id: ['', [Validators.required, Validators.maxLength(5), Validators.min(1), Validators.max(99999)]],
     });
 
     this.cancelForm = this.formBuilder.group({
@@ -51,11 +51,11 @@ export class OrderComponent implements OnInit {
     });
 
     this.billForm = this.formBuilder.group({
-      id: [''],
+      id: ['', [Validators.required, Validators.maxLength(5), Validators.min(1), Validators.max(99999)]],
     });
 
     this.byDateForm = this.formBuilder.group({
-      billingDate: ['', Validators.required],
+      billingDate: ['', [Validators.required]],
     });
   }
 
@@ -83,15 +83,18 @@ export class OrderComponent implements OnInit {
   }
 
   getOrderDetails(form: FormGroup){
-    this.order.car=[];
-    this.order.customer=new ICustomer();
-    this.order.customer.address=new IAddress();
+    // this.order.car=[];
+    // this.order.customer=new ICustomer();
+    // this.order.customer.address=new IAddress();
     let orderById = this.orderService.getOrderDetails(form.value.id).subscribe({
       next: order =>{
         
         this.order = order;
         // this.order.car=order.car;
-        console.log("Cars"+ this.order.car[0]);
+        for(let i=0; i<order.car.length;i++){
+          console.log("Cars"+ this.order.car[i].id);
+        }
+        //;
 
       }
     });
@@ -127,18 +130,18 @@ export class OrderComponent implements OnInit {
     });
 
     this.byDateForm.reset();
-    // this.openForm=5;
+    this.openForm=5;
   }
 
-  updateOrder(form: FormGroup){
-    this.order.id = form.get('id').value;
-    this.order.billingDate = form.get('billDate').value;
-    this.order.customer.userId = form.get('userId').value;
-  }
+  // updateOrder(form: FormGroup){
+  //   this.order.id = form.get('id').value;
+  //   this.order.billingDate = form.get('billDate').value;
+  //   this.order.customer.userId = form.get('userId').value;
+  // }
 
-  moreCars(){
-    this.addMoreCars = true;
-  }
+  // moreCars(){
+  //   this.addMoreCars = true;
+  // }
 
   getBill(form: FormGroup){
     console.log("in get bill");

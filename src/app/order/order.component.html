@@ -4,7 +4,7 @@
       <div class="card-top my-3 ml-3 text-primary">
         <h3>Manage your Orders</h3>
       </div>
-        
+
       <!-- <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn" name="placeTab" (click)="click(1)"><h5>Book Order</h5></button>
       <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn" name="changeTab" (click)="click(2)"><h5>Modify Orders</h5></button> -->
       <!-- <div class="dropdown">
@@ -18,11 +18,23 @@
           <li><button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn" name="browseTab" (click)="click(5)"><h5>By Billing Date</h5></button></li>
         </ul>
       </div> -->
-      <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn" name="searchAllTab" (click)="click(3)"><h5>Browse All Orders</h5></button>
-      <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn" name="searchByIdTab" (click)="click(4)"><h5>Browse By Order ID</h5></button>
-      <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn" name="searchByBillTab" (click)="click(5)"><h5>Browse By Billing Date</h5></button>
+      <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn"
+        name="searchAllTab" type="button" (click)="click(3)">
+        <h5>Browse All Orders</h5>
+      </button>
+      <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn"
+        name="searchByIdTab" (click)="click(4)">
+        <h5>Browse By Order ID</h5>
+      </button>
+      <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn"
+        name="searchByBillTab" (click)="click(5)">
+        <h5>Browse By Billing Date</h5>
+      </button>
       <!-- <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn" name="cancelTab" (click)="click(6)"><h5>Cancel Order</h5></button> -->
-      <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn" name="billTab" (click)="click(7)"><h5>Generate Bill</h5></button>    
+      <button class="btn btn-light container text-secondary shadow mb-3 bg-white rounded pt-3 pl-3 pb-2 list-btn"
+        name="billTab" (click)="click(7)">
+        <h5>Generate Bill</h5>
+      </button>
 
     </div>
   </div>
@@ -37,19 +49,22 @@
           <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)">
             <div class="form-group">
               <label for="id" class="mx-2">Order ID</label>
-              <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID" required/>
+              <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID"
+                required />
             </div>
             <div class="form-group">
               <label for="billDate" class="mx-2">Billing Date</label>
-              <input formControlName="billingDate" id="billingDate" type="date" class="form-control" required/>
+              <input formControlName="billingDate" id="billingDate" type="date" class="form-control" required />
             </div>
             <div class="form-group">
               <label for="userId" class="mx-2">User ID</label>
-              <input formControlName="custId" id="custId" type="number" class="form-control" placeholder="Enter User ID" required/>
+              <input formControlName="custId" id="custId" type="number" class="form-control" placeholder="Enter User ID"
+                required />
             </div>
             <div class="form-group">
               <label for="carId" class="mx-2">Car ID</label>
-              <input formControlName="carId" id="carId" type="number" class="form-control" placeholder="Enter Car ID" required/>
+              <input formControlName="carId" id="carId" type="number" class="form-control" placeholder="Enter Car ID"
+                required />
             </div>
             <div class="form-group">
               <button class="btn btn-primary mt-3 shadow float-right" [disabled]="addForm.invalid">Place Order</button>
@@ -68,19 +83,22 @@
           <form [formGroup]="modifyForm" (ngSubmit)="onSubmit(modifyForm)">
             <div class="form-group">
               <label for="id" class="mx-2">Order ID</label>
-              <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID" required/>
+              <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID"
+                required />
             </div>
             <div class="form-group">
               <label for="billDate" class="mx-2">Billing Date</label>
-              <input formControlName="billingDate" id="billingDate" type="date" class="form-control" required/>
+              <input formControlName="billingDate" id="billingDate" type="date" class="form-control" required />
             </div>
             <div class="form-group">
               <label for="userId" class="mx-2">User ID</label>
-              <input formControlName="custId" id="userId" type="number" class="form-control" placeholder="Enter User ID" required/>
+              <input formControlName="custId" id="userId" type="number" class="form-control" placeholder="Enter User ID"
+                required />
             </div>
             <div class="form-group">
               <label for="carId" class="mx-2">Car ID</label>
-              <input formControlName="carId" id="carId" type="number" class="form-control" placeholder="Enter Car ID" required/>
+              <input formControlName="carId" id="carId" type="number" class="form-control" placeholder="Enter Car ID"
+                required />
             </div>
             <div class="form-group">
               <button class="btn btn-primary mt-3 shadow float-right">Modify Order</button>
@@ -88,206 +106,269 @@
           </form>
         </div>
       </div>
-      </div>
+    </div>
 
-      <div *ngSwitchCase='3'>
-        <div class="card my-5 mr-5 p-3">
+    <div *ngSwitchCase='3'>
+      <div class="card my-5 mr-5 p-3">
         <div class="card-top my-3 mr-3 text-primary">
           <h4 id="heading">All Orders</h4>
-      </div>
-      <div class="card-body">
+        </div>
+        <div class="card-body">
           <form [formGroup]="allOrderForm" (ngSubmit)="getAllOrders(allOrderForm)">
-              <div class="form-group">
-                  <button class="btn btn-primary mt-4 float-right">Get All Orders</button>
-              </div>
+            <div class="form-group">
+              <button class="btn btn-primary mt-4 float-right">Get All Orders</button>
+            </div>
           </form>
-      </div>
-      <div *ngIf="(orders.length)">
-        <div class="card my-5 mr-5 p-3">
-          <div class="card-top my-3 mr-3 text-primary">
-            <h4 id="heading">All Orders</h4>
-          </div>
-          <form>
+        </div>
+        <div *ngIf="(orders.length)">
+          <div class="card my-5 mr-5 p-3">
+            <div class="card-top my-3 mr-3 text-primary">
+              <h4 id="heading">All Orders</h4>
+            </div>
+
             <div *ngFor="let order of orders">
+
               <table class="table table-bordered">
+    
                 <tr>
-                  <th>Order ID</th>
+                  <td><b>Order ID</b></td>
                   <td>{{order.id}}</td>
                 </tr>
+    
                 <tr>
-                  <th>Billing Date</th>
+                  <td><b>Billing Date</b></td>
                   <td>{{order.billingDate}}</td>
                 </tr>
+    
                 <tr>
-                  <th>Customer ID</th>
+                  <td><b>Customer ID</b></td>
                   <td>{{order.customer.userId}}</td>
                 </tr>
+    
                 <tr>
-                  <th>Customer Name</th>
+                  <td><b>Customer Name</b></td>
                   <td>{{order.customer.name}}</td>
                 </tr>
+    
                 <tr>
-                  <th>Contact Number</th>
+                  <td><b>Contact Number</b></td>
                   <td>{{order.customer.contactNo}}</td>
                 </tr>
+    
                 <tr>
-                  <th>Date of Birth</th>
+                  <td><b>Date of Birth</b></td>
                   <td>{{order.customer.dob}}</td>
                 </tr>
+    
                 <tr>
-                  <th>Customer Address</th>
-                  <td>{{order.customer.address.doorNo}}, {{order.customer.address.street}}, {{order.customer.address.area}}, {{order.customer.address.city}}, {{order.customer.address.state}}, {{order.customer.address.pincode}}</td>
+                  <td><b>Customer Address</b></td>
+                  <td>{{order.customer.address.doorNo}}, {{order.customer.address.street}},
+                    {{order.customer.address.area}}, {{order.customer.address.city}}, {{order.customer.address.state}},
+                    {{order.customer.address.pincode}}</td>
                 </tr>
+    
                 <tr>
-                    <th>Cars</th>
-                    <th>
-                        <tr *ngFor="let cars of order.car">
-                            <tr>
-                              <th>Car Id</th>
-                              <td>{{cars.id}}</td>
-                            </tr>
-                            <tr>
-                              <th>Brand Name</th>
-                              <td>{{cars.brand}}</td>
-                            </tr>
-                            <tr>
-                              <th>Model Name</th>
-                              <td>{{cars.model}}</td>
-                            </tr>
-                            <tr>
-                              <th>Car Color</th>
-                              <td>{{cars.color}}</td>
-                            </tr>
-                            <tr>
-                              <th>Car Variant</th>
-                              <td>{{cars.variant}}</td>
-                            </tr>
-                            <tr>
-                              <th>Car Price</th>
-                              <td>{{cars.price}}</td>
-                            </tr>
-                            <tr>
-                              <th>Registration Year</th>
-                              <td>{{cars.registrationYear}}</td>
-                            </tr>
-                            <tr>
-                              <th>Registration State</th>
-                              <td>{{cars.registrationState}}</td>
-                            </tr>
-                        </tr>
-                    
+                  <td>
+                <div>
+                  <tr>
+                    <td><b>Cars</b></td>
+                  </tr>
+                </div>
+              </td>
+    
+              <td>
+    
+                <div *ngFor="let cars of order.car" class="mb-2">
+    
+                <tr>
+                  <td><b>Car ID</b></td>
+                  <td>{{cars.id}}</td>
+                </tr>
+                <tr>            
+                  <td><b>Brand Name</b></td>
+                  <td>{{cars.brand}}</td>
+                </tr>
+                <tr>            
+                  <td><b>Model Name</b></td>
+                  <td>{{cars.model}}</td>
+                </tr>
+                <tr>            
+                  <td><b>Car Color</b></td>
+                  <td>{{cars.color}}</td>
+                </tr>
+                <tr>            
+                  <td><b>Car Variant</b></td>
+                  <td>{{cars.variant}}</td>
+                </tr>
+                <tr>            
+                  <td><b>Registration Year</b></td>
+                  <td>{{cars.registrationYear}}</td>
+                </tr>
+                <tr>            
+                  <td><b>Registration State</b></td>
+                  <td>{{cars.registrationState}}</td>
+                </tr>
+                <tr>            
+                  <td><b>Car Price</b></td>
+                  <td>{{cars.price | currency:'INR'}}</td>
+                </tr>
+    
+                </div>
+    
+              </td>
+    
+              </tr>
+    
+    
+    
+    
               </table>
+    
+            </div>
+            
           </div>
-      </form>
-        </div>
         </div>
       </div>
-      </div>
+    </div>
 
-      <div *ngSwitchCase='4'>
-        <div class="card my-5 mr-5 p-3">
-          <div class="card-top my-3 mr-3 text-primary">
-            <h4 id="heading">Browse By Order ID</h4>
-          </div>
-          <form [formGroup]="byIdForm" (ngSubmit)="getOrderDetails(byIdForm)">
+    <div *ngSwitchCase='4'>
+
+      <div class="card my-5 mr-5 p-3">
+
+        <div class="card-top my-3 mr-3 text-primary">
+          <h4 id="heading">Browse By Order ID</h4>
+        </div>
+
+        <form [formGroup]="byIdForm" (ngSubmit)="getOrderDetails(byIdForm)">
           <div class="form-group">
             <label for="id" class="mx-2">Order ID</label>
-            <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID" required/>
+            <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID"
+              required autofocus/>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary mt-3 shadow float-right">Search Order</button>
+            <button class="btn btn-primary mt-3 shadow float-right" [disabled]="byIdForm.invalid">Search Order</button>
           </div>
         </form>
 
-        <!-- table code -->
-        <form>
-            <div *ngIf="(order)">
-              <table class="table table-bordered">
-                <tr>
-                  <th>Order ID</th>
-                  <td>{{order.id}}</td>
-                </tr>
-                <tr>
-                  <th>Billing Date</th>
-                  <td>{{order.billingDate}}</td>
-                </tr>
-                <tr>
-                  <th>Customer ID</th>
-                  <td>{{order.customer.userId}}</td>
-                </tr>
-                <tr>
-                  <th>Customer Name</th>
-                  <td>{{order.customer.name}}</td>
-                </tr>
-                <tr>
-                  <th>Contact Number</th>
-                  <td>{{order.customer.contactNo}}</td>
-                </tr>
-                <tr>
-                  <th>Date of Birth</th>
-                  <td>{{order.customer.dob}}</td>
-                </tr>
-                <tr>
-                  <th>Customer Address</th>
-                  <td>{{order.customer.address.doorNo}}, {{order.customer.address.street}}, {{order.customer.address.area}}, {{order.customer.address.city}}, {{order.customer.address.state}}, {{order.customer.address.pincode}}</td>
-                </tr>
-                <tr>
-                    <th>Cars</th>
-                    <th>
-                        <tr *ngFor="let cars of order.car">
-                            <tr>
-                              <th>Car Id</th>
-                              <td>{{cars?.id}}</td>
-                            </tr>
-                            <tr>
-                              <th>Brand Name</th>
-                              <td>{{cars?.brand}}</td>
-                            </tr>
-                            <tr>
-                              <th>Model Name</th>
-                              <td>{{cars?.model}}</td>
-                            </tr>
-                            <tr>
-                              <th>Car Color</th>
-                              <td>{{cars?.color}}</td>
-                            </tr>
-                            <tr>
-                              <th>Car Variant</th>
-                              <td>{{cars?.variant}}</td>
-                            </tr>
-                            <tr>
-                              <th>Car Price</th>
-                              <td>{{cars?.price}}</td>
-                            </tr>
-                            <tr>
-                              <th>Registration Year</th>
-                              <td>{{cars?.registrationYear}}</td>
-                            </tr>
-                            <tr>
-                              <th>Registration State</th>
-                              <td>{{cars?.registrationState}}</td>
-                            </tr>
-                        </tr>
-                    
-              </table>
-          </div>
-      </form>
+        <div *ngIf="(order)">
+
+          <table class="table table-bordered">
+
+            <tr>
+              <td><b>Order ID</b></td>
+              <td>{{order.id}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Billing Date</b></td>
+              <td>{{order.billingDate}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Customer ID</b></td>
+              <td>{{order.customer.userId}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Customer Name</b></td>
+              <td>{{order.customer.name}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Contact Number</b></td>
+              <td>{{order.customer.contactNo}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Date of Birth</b></td>
+              <td>{{order.customer.dob}}</td>
+            </tr>
+
+            <tr>
+              <td><b>Customer Address</b></td>
+              <td>{{order.customer.address.doorNo}}, {{order.customer.address.street}},
+                {{order.customer.address.area}}, {{order.customer.address.city}}, {{order.customer.address.state}},
+                {{order.customer.address.pincode}}</td>
+            </tr>
+
+            <tr>
+              <td>
+            <div>
+              <tr>
+                <td><b>Cars</b></td>
+              </tr>
+            </div>
+          </td>
+
+          <td>
+
+            <div *ngFor="let cars of order.car" class="mb-2">
+
+            <tr>
+              <td><b>Car ID</b></td>
+              <td>{{cars.id}}</td>
+            </tr>
+            <tr>            
+              <td><b>Brand Name</b></td>
+              <td>{{cars.brand}}</td>
+            </tr>
+            <tr>            
+              <td><b>Model Name</b></td>
+              <td>{{cars.model}}</td>
+            </tr>
+            <tr>            
+              <td><b>Car Color</b></td>
+              <td>{{cars.color}}</td>
+            </tr>
+            <tr>            
+              <td><b>Car Variant</b></td>
+              <td>{{cars.variant}}</td>
+            </tr>
+            <tr>            
+              <td><b>Registration Year</b></td>
+              <td>{{cars.registrationYear}}</td>
+            </tr>
+            <tr>            
+              <td><b>Registration State</b></td>
+              <td>{{cars.registrationState}}</td>
+            </tr>
+            <tr>            
+              <td><b>Car Price</b></td>
+              <td>{{cars.price | currency:'INR'}}</td>
+            </tr>
+
+            </div>
+
+          </td>
+
+          </tr>
+
+
+
+
+          </table>
 
         </div>
+
+
+
       </div>
 
-      <div *ngSwitchCase='5'>
-        <div class="card my-5 mr-5 p-3">
-          <div class="card-top my-3 mr-3 text-primary">
-            <h4 id="heading">Browse By Billing Date</h4>
-          </div>
-          <form [formGroup]="byDateForm" (ngSubmit)="getByBillDate(byDateForm)">
+    </div>
+
+    <div *ngSwitchCase='5'>
+      <div class="card my-5 mr-5 p-3">
+        <div class="card-top my-3 mr-3 text-primary">
+          <h4 id="heading">Browse By Billing Date</h4>
+        </div>
+        <form [formGroup]="byDateForm" (ngSubmit)="getByBillDate(byDateForm)">
           <div class="form-group">
             <label for="billDate" class="mx-2">Billing Date</label>
-            <input formControlName="billingDate" id="billingDate" type="date" class="form-control" placeholder="Enter Billing Date" required/>
+            <input formControlName="billingDate" id="billingDate" type="date" class="form-control"
+              placeholder="Enter Billing Date" required autofocus/>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary mt-3 shadow float-right">Search Order</button>
+            <button class="btn btn-primary mt-3 shadow float-right" [disabled]="byDateForm.invalid">Search Order</button>
           </div>
         </form>
 
@@ -302,112 +383,126 @@
                 </tr>
               </table>
             </div>
-            <form>
+            
               <div *ngFor="let order of orders">
                 <table class="table table-bordered">
                   <tr>
-                    <th>Order ID</th>
+                    <td><b>Order ID</b></td>
                     <td>{{order.id}}</td>
                   </tr>
                   <tr>
-                    <th>Customer ID</th>
+                    <td><b>Customer ID</b></td>
                     <td>{{order.customer.userId}}</td>
                   </tr>
                   <tr>
-                    <th>Customer Name</th>
+                    <td><b>Customer Name</b></td>
                     <td>{{order.customer.name}}</td>
                   </tr>
                   <tr>
-                    <th>Contact Number</th>
+                    <td><b>Contact Number</b></td>
                     <td>{{order.customer.contactNo}}</td>
                   </tr>
                   <tr>
-                    <th>Date of Birth</th>
+                    <td><b>Date of Birth</b></td>
                     <td>{{order.customer.dob}}</td>
                   </tr>
                   <tr>
-                    <th>Customer Address</th>
-                    <td>{{order.customer.address.doorNo}}, {{order.customer.address.street}}, {{order.customer.address.area}}, {{order.customer.address.city}}, {{order.customer.address.state}}, {{order.customer.address.pincode}}</td>
+                    <td><b>Customer Address</b></td>
+                    <td>{{order.customer.address.doorNo}}, {{order.customer.address.street}},
+                      {{order.customer.address.area}}, {{order.customer.address.city}},
+                      {{order.customer.address.state}}, {{order.customer.address.pincode}}</td>
                   </tr>
+
                   <tr *ngIf="(order.car)">
-                      <th>Cars</th>
-                      <th>
-                          <tr *ngFor="let cars of order.car">
-                              <tr>
-                                <th>Car Id</th>
-                                <td>cars.id</td>
-                              </tr>
-                              <tr>
-                                <th>Brand Name</th>
-                                <td>cars.brand</td>
-                              </tr>
-                              <tr>
-                                <th>Model Name</th>
-                                <td>cars.model</td>
-                              </tr>
-                              <tr>
-                                <th>Car Color</th>
-                                <td>cars.color</td>
-                              </tr>
-                              <tr>
-                                <th>Car Variant</th>
-                                <td>cars.variant</td>
-                              </tr>
-                              <tr>
-                                <th>Car Price</th>
-                                <td>cars.price</td>
-                              </tr>
-                              <tr>
-                                <th>Registration Year</th>
-                                <td>cars.registrationYear</td>
-                              </tr>
-                              <tr>
-                                <th>Registration State</th>
-                                <td>cars.registrationState</td>
-                              </tr>
-                          </tr>
-                      
+                    <td>
+                      <div>
+                        <tr>
+                          <td><b>Cars</b></td>
+                        </tr>
+                      </div>
+                    </td>
+                    <td>
+                      <div *ngFor="let cars of order.car" class="mb-2">
+                        <tr>
+                          <td><b>Car ID</b></td>
+                          <td>{{cars.id}}</td>
+                        </tr>
+                        <tr>            
+                          <td><b>Brand Name</b></td>
+                          <td>{{cars.brand}}</td>
+                        </tr>
+                        <tr>            
+                          <td><b>Model Name</b></td>
+                          <td>{{cars.model}}</td>
+                        </tr>
+                        <tr>            
+                          <td><b>Car Color</b></td>
+                          <td>{{cars.color}}</td>
+                        </tr>
+                        <tr>            
+                          <td><b>Car Variant</b></td>
+                          <td>{{cars.variant}}</td>
+                        </tr>
+                        <tr>            
+                          <td><b>Registration Year</b></td>
+                          <td>{{cars.registrationYear}}</td>
+                        </tr>
+                        <tr>            
+                          <td><b>Registration State</b></td>
+                          <td>{{cars.registrationState}}</td>
+                        </tr>
+                        <tr>            
+                          <td><b>Car Price</b></td>
+                          <td>{{cars.price | currency:'INR'}}</td>
+                        </tr>
+            
+                        </div>
+
+                    </td>
+                  </tr>
+
                 </table>
-            </div>
-        </form>
+              </div>
           </div>
-          </div>
-        </div>
-      </div>
-
-      <div *ngSwitchCase='6'>
-        <div class="card my-5 mr-5 p-3">
-          <div class="card-top my-3 mr-3 text-primary">
-            <h4 id="heading">Cancel Order</h4>
-          </div>
-          <form [formGroup]="cancelForm" (ngSubmit)="onSubmit(cancelForm)">
-          <div class="form-group">
-            <label for="id" class="mx-2">Order ID</label>
-            <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID" required/>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary mt-3 shadow float-right" [disabled]="cancelForm.invalid">Cancel Order</button>
-          </div>
-        </form>
-        </div>
-      </div>
-
-      <div *ngSwitchCase='7'>
-        <div class="card my-5 mr-5 p-3">
-          <div class="card-top my-3 mr-3 text-primary">
-            <h4 id="heading">Billing Section</h4>
-          </div>
-          <form [formGroup]="billForm" (ngSubmit)="getBill(billForm)">
-          <div class="form-group">
-            <label for="id" class="mx-2">Order ID</label>
-            <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID" required/>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary mt-3 shadow float-right">Generate Bill</button>
-          </div>
-        </form>
         </div>
       </div>
     </div>
-  </div>
 
+    <div *ngSwitchCase='6'>
+      <div class="card my-5 mr-5 p-3">
+        <div class="card-top my-3 mr-3 text-primary">
+          <h4 id="heading">Cancel Order</h4>
+        </div>
+        <form [formGroup]="cancelForm" (ngSubmit)="onSubmit(cancelForm)">
+          <div class="form-group">
+            <label for="id" class="mx-2">Order ID</label>
+            <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID"
+              required />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary mt-3 shadow float-right" [disabled]="cancelForm.invalid">Cancel
+              Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div *ngSwitchCase='7'>
+      <div class="card my-5 mr-5 p-3">
+        <div class="card-top my-3 mr-3 text-primary">
+          <h4 id="heading">Billing Section</h4>
+        </div>
+        <form [formGroup]="billForm" (ngSubmit)="getBill(billForm)">
+          <div class="form-group">
+            <label for="id" class="mx-2">Order ID</label>
+            <input formControlName="id" id="id" type="number" class="form-control" placeholder="Enter Order ID"
+              required autofocus/>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary mt-3 shadow float-right" [disabled]="billForm.invalid">Generate Bill</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

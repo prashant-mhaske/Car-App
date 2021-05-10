@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 //import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { IAdmin } from '../models/admin';
 import { ICustomer } from '../models/customer';
 import { CustomerService } from '../services/customer.service';
@@ -62,11 +63,25 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("userId",JSON.stringify(this.customer.userId));
           localStorage.setItem("adminId",JSON.stringify(0));
           console.log(this.customer);
-          this.router.navigate(['/products']);
+          Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: 'Sign In Successful',
+            showConfirmButton: false,
+            timer: 1500,
+            willClose: () =>{
+              this.router.navigate(['/products']);
+            }
+          });
+          // this.router.navigate(['/products']);
       },
 
       error : err=> {
-        alert('Invalid UserId or Password');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops',
+          text: 'Invalid Username or password !'
+        })
       }
 
     });

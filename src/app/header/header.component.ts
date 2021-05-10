@@ -31,8 +31,10 @@ export class HeaderComponent implements OnInit{
   }
 
   logout(){
-    localStorage.setItem("userId", JSON.stringify(0));
-    localStorage.setItem("adminId", JSON.stringify(0));
+    // localStorage.setItem("userId", JSON.stringify(0));
+    // localStorage.setItem("adminId", JSON.stringify(0));
+    localStorage.removeItem('userId');
+    localStorage.removeItem('adminId');
     this.router.navigate(['/home']);
   }
 

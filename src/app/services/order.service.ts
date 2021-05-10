@@ -32,6 +32,7 @@ export class OrderService {
   }
 
   public getOrdersByBillingDate(billingDate: string): Observable<IOrder[]> {
+    console.log(billingDate);
     return this.httpClient.get<IOrder[]>(`${this.orderApi}GetCars/billDate/{billingDate}?billingDate=${billingDate}`).pipe(
       tap(data => console.log('Displaying Order by Date', JSON.stringify(data))),
       catchError(this.handleError)
@@ -49,17 +50,17 @@ export class OrderService {
   //   return this.httpClient.get<String>(`${this.orderApi}getBill/${id}`);
   // }
 
-  public setId(id:number){
-    this.order.id = id;
-    console.log(this.order.id);
-  }
+  // public setId(id:number){
+  //   this.order.id = id;
+  //   console.log(this.order.id);
+  // }
 
-  public getBill(): Observable<IOrder>{
-    return this.httpClient.get<IOrder>(`${this.orderApi}getOrderDetails/${this.order.id}`).pipe(
-      tap(data => console.log('Displaying Bill', JSON.stringify(data))),
-      catchError(this.handleError)
-    );
-  }
+  // public getBill(): Observable<IOrder>{
+  //   return this.httpClient.get<IOrder>(`${this.orderApi}getOrderDetails/${this.order.id}`).pipe(
+  //     tap(data => console.log('Displaying Bill', JSON.stringify(data))),
+  //     catchError(this.handleError)
+  //   );
+  // }
 
   // public updateOrder(id: number, billingDate: string, userId: number, carId: number[]): Observable<IOrder>{
   //   return this.httpClient.put<IOrder>(`${this.orderApi}update`,[id, billingDate, userId, carId]);

@@ -79,34 +79,6 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
     }
 
     console.log(this.carArray);
-
-    // this.order.car = this.carArray;
-    // for(let i=0;i<this.order.car.length;i++){
-    //   this.total+=this.order.car[i].price;
-    // }
-    // this.sgst=this.total*0.09;
-    // this.cgst=this.total*0.09;
-    // this.amount=this.total+this.sgst+this.cgst;
-    // for(let i=0;i<this.order.car.length;i++){
-    //   this.total+=this.order.car[i].price;
-    // }
-    // this.sgst=this.total*0.09;
-    // this.cgst=this.total*0.09;
-    // this.amount=this.total+this.sgst+this.cgst;
-
-
-    // this.sub=this.paymentService.getOrderDetails(247).subscribe({
-    //   next: order => {
-    //     this.order=order;
-    //     for(let i=0;i<this.order.car.length;i++){
-    //       this.total+=this.order.car[i].price;
-    //     }
-    //     this.sgst=this.total*0.09;
-    //     this.cgst=this.total*0.09;
-    //     this.amount=this.total+this.sgst+this.cgst;
-    //   }
-    // });
-
   }
   click(){
     
@@ -120,10 +92,12 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
       next: data =>{
         console.log('data received in order details component', data);
         this.orderId=data.id;
+        localStorage.setItem('orderId',JSON.stringify(this.orderId));
+        this.router.navigate(['/payment']);
       }
     })
     
-    this.router.navigate(['/payment']);
+    
   }
 
   ngOnDestroy(): void {
