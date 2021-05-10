@@ -98,7 +98,7 @@ export class CarUpdateComponent implements OnInit {
   addCarInfo(form: FormGroup) {
     
     this.carService.doRegistration(form.value).subscribe(data =>{
-      // console.log("Data Inserted"+data);
+
       console.log("Data");
     },
     error=>{

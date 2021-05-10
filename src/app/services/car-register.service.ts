@@ -27,12 +27,11 @@ export class CarRegisterService {
 
   getAllCars(): Observable<ICar[]>{
     return this.http.get<ICar[]>(this.getUrl);
-    // .pipe(map(response=>response));
+
   }
   
   deleteCarRecord(id:number): Observable<any>{
-    // console.log(id);
-    // return this.http.delete(`http://localhost:8090/Cars/delete/${id}`, {responseType: 'text'});
+
     return this.http.delete<ICar>(`http://localhost:8090/Cars/delete/${id}`).pipe(
       tap(data => console.log('Deleted Data', JSON.stringify(data))),
       catchError(this.handleError)
@@ -50,7 +49,7 @@ export class CarRegisterService {
       {
         this.cartItems.push(this.dummy[i]);
       }
-      // this.cartItems.length=num;
+
     this.cartItems.push(id);
     console.log("Car Item length  :"+this.cartItems.length);
     localStorage.setItem('len',JSON.stringify(this.cartItems.length));
@@ -63,30 +62,10 @@ export class CarRegisterService {
       localStorage.setItem('len',JSON.stringify(this.cartItems.length));
       localStorage.setItem('user',JSON.stringify(this.cartItems));
     }
-    // this.cartItems.length=num;
-    // this.cartItems.push(id);
-    // console.log("Car Item length  :"+this.cartItems.length);
-    // localStorage.setItem('len',JSON.stringify(this.cartItems.length));
-    // localStorage.setItem('user',JSON.stringify(this.cartItems));
-
-    // main Code
-    // this.cartItems.length=num;
-    // this.cartItems.push(id);
-    // console.log("Car Item length  :"+this.cartItems.length);
-    // localStorage.setItem('len',JSON.stringify(this.cartItems.length));
-    // localStorage.setItem('user',JSON.stringify(this.cartItems));
-    // main Code
-
-    // console.log(JSON.parse(localStorage.getItem('len')));
-    // this.cart=num+JSON.parse(localStorage.getItem('len'));
-    // console.log("Actual: "+this.cart);
-    // return this.cart;
-    // return this.cartItems.length;
     return JSON.parse(localStorage.getItem('len'));
   }
 
   getCar(id:number):Observable<ICar>{
-      // return this.http.get<ICar>(`http://localhost:8090/Cars/GetCar/${id}`);
       return this.http.get<ICar>(`http://localhost:8090/Cars/GetCar/${id}`).pipe(
         tap(data => console.log('Car Data', JSON.stringify(data))),
         catchError(this.handleError)
