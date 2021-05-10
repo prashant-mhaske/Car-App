@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import { ICar } from '../models/car';
 import { CarRegisterService } from '../services/car-register.service';
 import { from } from 'rxjs';
@@ -131,11 +131,11 @@ export class CarDataComponent implements OnInit {
     if (!userId) {
       localStorage.removeItem('len');
       localStorage.removeItem('user');
-      Swal.fire({
-        icon: 'error',
-        title: 'User Not Logged In...',
-        text: 'Please Login to place an order'
-      });
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'User Not Logged In...',
+      //   text: 'Please Login to place an order'
+      // });
       this.router.navigate(['/login']);
     }
     else {
