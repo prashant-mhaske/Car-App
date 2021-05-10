@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ICar } from '../models/car';
 import { CarRegisterService } from '../services/car-register.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-car-data',
@@ -10,19 +12,19 @@ import { CarRegisterService } from '../services/car-register.service';
 })
 export class CarDataComponent implements OnInit {
 
-  constructor(private carServive: CarRegisterService, private router:Router) { }
+  constructor(private carServive: CarRegisterService, private router: Router) { }
 
   cars: ICar[] = [];
   // selectedCars: ICar[] = [];
   // totalCartItems:number;
-  num:number;// = JSON.parse(localStorage.getItem('len'));
-  length:number=0;
+  num: number;// = JSON.parse(localStorage.getItem('len'));
+  length: number = 0;
   filters = {
-    keyword:''
+    keyword: ''
   }
 
-  n:number;
-  pageOfItems:Array<ICar>;
+  n: number;
+  pageOfItems: Array<ICar>;
   pageSize: number = 6;
 
   //   {
@@ -30,7 +32,7 @@ export class CarDataComponent implements OnInit {
   //     "brand": "Mercedes",
   //     "model": "Benz",
   //     "color": "Black",
-   //       
+  //       
   //     "variant": "Recent",
   //     "price": 1200000,
   //     "registrationYear": "2021-03-12",
@@ -79,65 +81,79 @@ export class CarDataComponent implements OnInit {
   // ]
 
   ngOnInit(): void {
-    if (!localStorage.getItem('foo')) { 
-      localStorage.setItem('foo', 'no reload') 
-      location.reload() 
+    if (!localStorage.getItem('foo')) {
+      localStorage.setItem('foo', 'no reload')
+      location.reload()
     } else {
-      localStorage.removeItem('foo') 
+      localStorage.removeItem('foo')
     }
-    this.carServive.getAllCars().subscribe(data=>this.cars=data);
-    this.num=JSON.parse(localStorage.getItem('len'));
+    this.carServive.getAllCars().subscribe(data => this.cars = data);
+    this.num = JSON.parse(localStorage.getItem('len'));
     // console.log(this.num);
-    this.n=JSON.parse(localStorage.getItem('len'));
+    this.n = JSON.parse(localStorage.getItem('len'));
   }
 
-  carList(){
+  carList() {
     this.carServive.getAllCars().subscribe(
-      data=>{
+      data => {
         this.cars = this.filterCars(data);
-        
+
       });
-    
+
   }
 
-  filterCars(cars: ICar[]){
+  filterCars(cars: ICar[]) {
     return cars.filter((c) => {
       return c.brand.toLocaleLowerCase().includes(this.filters.keyword.toLocaleLowerCase())
-            || c.model.toLocaleLowerCase().includes(this.filters.keyword.toLocaleLowerCase())
-            || c.color.toLocaleLowerCase().includes(this.filters.keyword.toLocaleLowerCase()) ;
+        || c.model.toLocaleLowerCase().includes(this.filters.keyword.toLocaleLowerCase())
+        || c.color.toLocaleLowerCase().includes(this.filters.keyword.toLocaleLowerCase());
     })
   }
 
-addToCart(id:number){
-  // console.log(JSON.parse(localStorage.getItem('len')));
-  // this.carServive.cartDetails(car).sub
-  
-  console.log("Inside add to cart: "+JSON.parse(localStorage.getItem('len')));
-  this.length= this.carServive.cartDetails(id,this.num);
-  // console.log("length from storage:"+JSON.parse(localStorage.getItem('len')));
-  console.log("length from storage: "+this.length);
-  // this.length+=this.num;
-  
-  this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-  this.router.onSameUrlNavigation='reload';
-  this.router.navigate(['/products']);
-  
-}
+  addToCart(id: number) {
+    // console.log(JSON.parse(localStorage.getItem('len')));
+    // this.carServive.cartDetails(car).sub
 
-goToCart(){
-  this.router.navigate(['/order-details']);
-}
+    console.log("Inside add to cart: " + JSON.parse(localStorage.getItem('len')));
+    this.length = this.carServive.cartDetails(id, this.num);
+    // console.log("length from storage:"+JSON.parse(localStorage.getItem('len')));
+    console.log("length from storage: " + this.length);
+    // this.length+=this.num;
 
-clearCart()
-{
-  localStorage.clear();
-  this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-  this.router.onSameUrlNavigation='reload';
-  this.router.navigate(['/products']);
-}
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/products']);
 
-pageClick(pageOfItems:Array<ICar>){
-  this.pageOfItems = pageOfItems;
-}
+  }
+
+  goToCart() {
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    if (!userId) {
+      localStorage.removeItem('len');
+      localStorage.removeItem('user');
+      Swal.fire({
+        icon: 'error',
+        title: 'User Not Logged In...',
+        text: 'Please Login to place an order'
+      });
+      this.router.navigate(['/login']);
+    }
+    else {
+      this.router.navigate(['/order-details']);
+    }
+  }
+
+  clearCart() {
+    // localStorage.clear();
+    localStorage.removeItem('len');
+    localStorage.removeItem('user')
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/products']);
+  }
+
+  pageClick(pageOfItems: Array<ICar>) {
+    this.pageOfItems = pageOfItems;
+  }
 
 }
