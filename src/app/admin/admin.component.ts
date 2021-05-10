@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { IAdmin } from '../models/admin';
 import { AdminService } from '../services/admin.service';
 
@@ -59,10 +60,24 @@ export class AdminComponent implements OnInit {
         localStorage.setItem("adminId", JSON.stringify(this.admin.userId));
         localStorage.setItem("userId", JSON.stringify(0));
         console.log(this.admin);
-        this.router.navigate(['/admin-dashboard']);
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: 'Sign In Successful',
+          showConfirmButton: false,
+          timer: 1500,
+          willClose: () =>{
+            this.router.navigate(['/admin-dashboard']);
+          }
+        });
+        
       },
       error: err => {
-        alert('Invalid User Id or Passsword');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops',
+          text: 'Invalid Username or password !'
+        })
       }
     });
 
